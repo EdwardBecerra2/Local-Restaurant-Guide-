@@ -1,16 +1,6 @@
-// var APIKey = "R_sNro_9M5MMte44II_lc7lHapNDozfk4koDZwqGa4dUlQCp1TwCUyxbKLXd9cA5IwYSJh8_W06hoVokVsGbNO-Y91AZhyXUpbNw2-611hQVd798jZd_udzI7A1oZXYx"
-// Example
-var exampleResults = [
-    { name: 'Restaurant 1', location: '123 Main St' },
-    { name: 'Restaurant 2', location: '456 Main St' },
-    // Add more results as needed
-];
+// var yelpAPIKey = "R_sNro_9M5MMte44II_lc7lHapNDozfk4koDZwqGa4dUlQCp1TwCUyxbKLXd9cA5IwYSJh8_W06hoVokVsGbNO-Y91AZhyXUpbNw2-611hQVd798jZd_udzI7A1oZXYx"
+// var googleApiKey = 
 
-var exampleHistorys = [
-    { name: 'Restaurant 1', location: '123 Main St' },
-    { name: 'Restaurant 2', location: '456 Main St' },
-    // Add more results as needed
-];
 
 function displayResults(results) {
     var resultsContainer = document.getElementById('results');
