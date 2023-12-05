@@ -29,6 +29,12 @@ function searchRestaurants() {
             var resultContainer = document.createElement('div');
             resultContainer.classList.add('result-item');
 
+            var resultRestaurantAddress = document.createElement('div');
+            resultRestaurantAddress.classList.add('resultRestaurantAddress-item');
+
+            var resultRatingRatingTotal = document.createElement('div');
+            resultRatingRatingTotal.classList.add('resultRatingRatingTotal-item');
+
             var listElm = document.createElement('li');
             listElm.classList.add('result-item-restaurant-name');
             listElm.textContent = res[i].name;
@@ -38,14 +44,18 @@ function searchRestaurants() {
             address.classList.add('result-item-address');
 
             var userRaintTotal = document.createElement('li');
-            userRaintTotal.textContent = res[i].user_ratings_total;
+            userRaintTotal.textContent = ("Total reviews: " + res[i].user_ratings_total);
             userRaintTotal.classList.add('result-item-ratings-total');
 
             var rating = document.createElement('li');
-            rating.textContent = res[i].rating;
+            rating.textContent = ("Rating: " + res[i].rating + " out of 5");
             rating.classList.add('result-item-rating');
 
-            resultContainer.append(listElm, address, userRaintTotal, rating)
+            resultRestaurantAddress.append(listElm, address)
+            resultRatingRatingTotal.append(rating, userRaintTotal)
+
+
+            resultContainer.append(resultRestaurantAddress, resultRatingRatingTotal)
             
             resultsContainer.append(resultContainer)
         }
