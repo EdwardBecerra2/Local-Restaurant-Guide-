@@ -6,7 +6,7 @@ var map;
 function searchRestaurants() {
     var searchQuery = searchInput.value;
     var pyrmont = { lat: -33.866, lng: 151.196 };
-     map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         center: pyrmont,
         zoom: 17,
         mapId: "8d193001f940fde3",
@@ -20,12 +20,12 @@ function searchRestaurants() {
     }
 
     console.log("Request:", request);
-    service.textSearch(request, function(res) {
+    service.textSearch(request, function (res) {
         console.log("Google maps response:");
         console.log(res);
 
         // Display the results
-        for(var i = 0; i < res.length; i++) {
+        for (var i = 0; i < 10 && i < res.length; i++) {
             var resultContainer = document.createElement('div');
             resultContainer.classList.add('result-item', 'flex', 'justify-between', 'gap-x-6', 'py-5');
 
@@ -36,7 +36,7 @@ function searchRestaurants() {
             resultRatingRatingTotal.classList.add('resultRatingRatingTotal-item');
 
             var listElm = document.createElement('li');
-            listElm.classList.add('result-item-restaurant-name', 'text-2xl' ,'font-semibold' ,'leading-6' ,'text-gray-900');
+            listElm.classList.add('result-item-restaurant-name', 'text-2xl', 'font-semibold', 'leading-6', 'text-gray-900');
             listElm.textContent = res[i].name;
 
             var address = document.createElement('li');
@@ -56,7 +56,7 @@ function searchRestaurants() {
 
 
             resultContainer.append(resultRestaurantAddress, resultRatingRatingTotal)
-            
+
             resultsContainer.append(resultContainer)
         }
 
