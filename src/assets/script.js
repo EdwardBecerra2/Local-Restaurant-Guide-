@@ -28,7 +28,11 @@ function searchRestaurants() {
         for(var i = 0; i < res.length; i++) {
             var listElm = document.createElement('li');
             listElm.textContent = res[i].name;
-            resultsContainer.append(listElm)
+            var userinput = document.createElement('li');
+            userinput.textContent = res[i].user_ratings_total;
+            var rating = document.createElement('li');
+            rating.textContent = res[i].rating;
+            resultsContainer.append(listElm, userinput, rating)
         }
 
     });
@@ -36,4 +40,5 @@ function searchRestaurants() {
 
 
 searchBtn.addEventListener('click', searchRestaurants);
+
 
