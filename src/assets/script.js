@@ -1,5 +1,5 @@
 var searchInput = document.querySelector('#search');
-var searchBtn = document.querySelector('#search-btn');
+var searchBtn = document.querySelector('.search-btn');
 var resultsContainer = document.querySelector('#results');
 var map;
 
@@ -26,13 +26,28 @@ function searchRestaurants() {
 
         // Display the results
         for(var i = 0; i < res.length; i++) {
+            var resultContainer = document.createElement('div');
+            resultContainer.classList.add('result-item');
+
             var listElm = document.createElement('li');
+            listElm.classList.add('result-item-restaurant-name');
             listElm.textContent = res[i].name;
-            var userinput = document.createElement('li');
-            userinput.textContent = res[i].user_ratings_total;
+
+            var address = document.createElement('li');
+            address.textContent = res[i].formatted_address;
+            address.classList.add('result-item-address');
+
+            var userRaintTotal = document.createElement('li');
+            userRaintTotal.textContent = res[i].user_ratings_total;
+            userRaintTotal.classList.add('result-item-ratings-total');
+
             var rating = document.createElement('li');
             rating.textContent = res[i].rating;
-            resultsContainer.append(listElm, userinput, rating)
+            rating.classList.add('result-item-rating');
+
+            resultContainer.append(listElm, address, userRaintTotal, rating)
+            
+            resultsContainer.append(resultContainer)
         }
 
     });
