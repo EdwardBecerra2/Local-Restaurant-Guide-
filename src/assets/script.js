@@ -28,9 +28,15 @@ function searchRestaurants() {
         for(var i = 0; i < res.length; i++) {
             var listElm = document.createElement('li');
             listElm.textContent = res[i].name;
-            resultsContainer.append(listElm)
+            var addr = document.createElement('li')
+            addr.textContent = res[i].formatted_address;
+            var rating = document.createElement('li')
+            rating.textContent = res[i].rating;
+            var reviews = document.createElement('ol')
+            reviews.textContent =res[i].user_ratings_total
+            resultsContainer.append(listElm, addr, rating, reviews)
+            
         }
-
     });
 }
 
