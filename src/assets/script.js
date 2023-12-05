@@ -1,30 +1,39 @@
-// var yelpAPIKey = "R_sNro_9M5MMte44II_lc7lHapNDozfk4koDZwqGa4dUlQCp1TwCUyxbKLXd9cA5IwYSJh8_W06hoVokVsGbNO-Y91AZhyXUpbNw2-611hQVd798jZd_udzI7A1oZXYx"
-// var googleApiKey = 
+var searchInput = document.querySelector('#search');
+var searchBtn = document.querySelector('#search-btn');
+var resultsContainer = document.querySelector('#results');
+var map;
 
-// function displayResults(results) {
-//     var resultsContainer = document.getElementById('results');
-//     resultsContainer.innerHTML = ''; // Clear previous results
+function searchRestaurants() {
+    var searchQuery = searchInput.value;
+    var pyrmont = { lat: -33.866, lng: 151.196 };
+     map = new google.maps.Map(document.getElementById("map"), {
+        center: pyrmont,
+        zoom: 17,
+        mapId: "8d193001f940fde3",
+    });
 
-//     results.forEach(result => {
-//         var resultItem = document.createElement('div');
-//         resultItem.className = 'result-item';
-//         resultItem.textContent = `${result.name} - ${result.location}`;
-//         resultsContainer.appendChild(resultItem);
-//     });
-// }
+    console.log(google.maps);
+    var service = new google.maps.places.PlacesService(map);
+    console.log(service);
+    var request = {
+        query: searchQuery
+    }
 
-// function displayHistorys(historys) {
-//     var historysContainer = document.getElementById('historys');
-//     historysContainer.innerHTML = ''; // Clear previous historys
+    console.log("Request:", request);
+    service.textSearch(request, function(res) {
+        console.log("Google maps response:");
+        console.log(res);
 
-//     historys.forEach(historys => {
-//         var historysItem = document.createElement('div');
-//         historysItem.className = 'historys-item';
-//         historysItem.textContent = `${historys.name} - ${historys.location}`;
-//         historysContainer.appendChild(historysItem);
-//     });
-// }
+        // Display the results
+        for(var i = 0; i < res.length; i++) {
+            var listElm = document.createElement('li');
+            listElm.textContent = res[i].name;
+            resultsContainer.append(listElm)
+        }
 
-// displayResults(exampleResults);
-// displayHistorys(exampleResults);
+    });
+}
+
+
+searchBtn.addEventListener('click', searchRestaurants);
 
