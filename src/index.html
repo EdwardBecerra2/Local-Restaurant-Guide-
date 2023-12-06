@@ -4,20 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
 </head>
 <body>
         <!-- Header section  -->
-  <header class="bg-white shadow">
-  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+  <div class="header1 shadow bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 ">
     <h1 class="text-3xl text-center font-bold tracking-tight text-gray-900">Local Restaurant Guide</h1>
   </div>
-  </header>
-  <!-- search box -->
-  <div class="container">
-      <div id="search-container">
-          <div id="search-bar">
+  </div>
+        <!-- search box -->
+  <div class="container flex max-w-none max-h-full justify-between p-5">
+      <div id="search-container" class="w-1/4">
+          <div id="search-bar" class="p-3">
               <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
               <div class="relative">
                   <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -25,143 +29,48 @@
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                       </svg>
                   </div>
-                  <input type="search" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Locations" required>
+                  <input type="search" id="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-100 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Restaurant" required>
                   <button type="submit" class="search-btn text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
               </div>
-          </div>
-          <!-- Display search history  -->
-          <div id="search-history">
-              <label for="Weather" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Weather Forecast</label>
-              <!-- <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"> -->
-                  <!-- <option selected>Choose Previous Restaurant</option>
-                  <option value="">Restaurant 1</option>
-                  <option value="">Restaurant 2</option>
-                  <option value="">Restaurant 3</option>
-                  <option value="">Restaurant 4</option>
-                  <option value="">Restaurant 5</option>
-                  <option value="">Restaurant 6</option>
-                  <option value="">Restaurant 7</option>
-                  <option value="">Restaurant 8</option> -->
-              </select>
-          </div>
+          </div> 
+          <div id="weather-container" class="rounded-3xl">
+            <div>Weather</div>
+          </div>         
       </div>
       <!-- Displayed results -->
-      <div id="results-container">
-          <h2>Results</h2>
-          <div id="results"></div>
+      <div id="results-container" class="pt-6 pr-5">
+          <h2 class="text-3xl">Results</h2>
+          <div id="results" class="divide-y divide-grey-2000 p-5 m-0.5">
+<!-- 
+            <div class="result-item clickable-0 flex justify-between gap-x-6 py-5" id="clickable-11">
+              <div class="resultRestaurantAddress-item">
+                <li class="result-item-restaurant-name text-2xl font-semibold leading-6 text-gray-900">bb.q Chicken Brea</li>
+                <li class="result-item-address mt-1 truncate text-xl leading-5 text-gray-500">421 S Associated Rd, Brea, CA 92821, United States</li>
+              </div>
+              <div class="resultRatingRatingTotal-item">
+                <li class="result-item-rating text-xl leading-6 text-gray-900">Rating: 4.8 out of 5</li>
+                <li class="result-item-ratings-total mt-1 text-xl leading-5 text-gray-500">Total reviews: 17</li>
+              </div>
+            </div>
 
-          <div class="result-item flex justify-between gap-x-6 py-5">
-            <div class="resultRestaurantAddress-item">
-              <li class="result-item-restaurant-name text-2xl font-semibold leading-6 text-gray-900">Pho Tay Bac Restaurant</li>
-              <li class="result-item-address mt-1 truncate text-xl leading-5 text-gray-500">860 W Imperial Hwy # A, Brea, CA 92821, United States</li>
+            <div class="result-item clickable-1 flex justify-between gap-x-6 py-5" id="clickable-12">
+              <div class="resultRestaurantAddress-item">
+                <li class="result-item-restaurant-name text-2xl font-semibold leading-6 text-gray-900">bb.q Chicken Brea</li>
+                <li class="result-item-address mt-1 truncate text-xl leading-5 text-gray-500">421 S Associated Rd, Brea, CA 92821, United States</li>
+              </div>
+              <div class="resultRatingRatingTotal-item">
+                <li class="result-item-rating text-xl leading-6 text-gray-900">Rating: 4.8 out of 5</li>
+                <li class="result-item-ratings-total mt-1 text-xl leading-5 text-gray-500">Total reviews: 17</li>
+              </div>
             </div>
-            <div class="resultRatingRatingTotal-item">
-              <li class="result-item-ratings-total text-xl leading-6 text-gray-900">248</li>
-              <li class="result-item-rating mt-1 text-xl leading-5 text-gray-500">4.6</li>
-            </div>
+             -->
           </div>
-
-          <ul role="list" class="divide-y divide-gray-100">
-              <li class="flex justify-between gap-x-6 py-5">
-
-                <div class="flex min-w-0 gap-x-4">
-                  <div class="min-w-0 flex-auto">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">Leslie Alexander</p>
-                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">leslie.alexander@example.com</p>
-                  </div>
-                </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <p class="text-sm leading-6 text-gray-900">Co-Founder / CEO</p>
-                  <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p>
-                </div>
-
-              </li>
-              <li class="flex justify-between gap-x-6 py-5">
-                <div class="flex min-w-0 gap-x-4">
-                  <div class="min-w-0 flex-auto">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">Michael Foster</p>
-                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">michael.foster@example.com</p>
-                  </div>
-                </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <p class="text-sm leading-6 text-gray-900">Co-Founder / CTO</p>
-                  <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p>
-                </div>
-              </li>
-              <li class="flex justify-between gap-x-6 py-5">
-                <div class="flex min-w-0 gap-x-4">
-                  <div class="min-w-0 flex-auto">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">Dries Vincent</p>
-                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">dries.vincent@example.com</p>
-                  </div>
-                </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <p class="text-sm leading-6 text-gray-900">Business Relations</p>
-                  <div class="mt-1 flex items-center gap-x-1.5">
-                    <div class="flex-none rounded-full bg-emerald-500/20 p-1">
-                      <div class="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
-                    </div>
-                    <p class="text-xs leading-5 text-gray-500">Online</p>
-                  </div>
-                </div>
-              </li>
-              <li class="flex justify-between gap-x-6 py-5">
-                <div class="flex min-w-0 gap-x-4">
-                  <div class="min-w-0 flex-auto">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">Lindsay Walton</p>
-                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">lindsay.walton@example.com</p>
-                  </div>
-                </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <p class="text-sm leading-6 text-gray-900">Front-end Developer</p>
-                  <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p>
-                </div>
-              </li>
-              <li class="flex justify-between gap-x-6 py-5">
-                <div class="flex min-w-0 gap-x-4">
-                  <div class="min-w-0 flex-auto">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">Courtney Henry</p>
-                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">courtney.henry@example.com</p>
-                  </div>
-                </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <p class="text-sm leading-6 text-gray-900">Designer</p>
-                  <p class="mt-1 text-xs leading-5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p>
-                </div>
-              </li>
-              <li class="flex justify-between gap-x-6 py-5">
-                <div class="flex min-w-0 gap-x-4">
-                  <div class="min-w-0 flex-auto">
-                    <p class="text-sm font-semibold leading-6 text-gray-900">Tom Cook</p>
-                    <p class="mt-1 truncate text-xs leading-5 text-gray-500">tom.cook@example.com</p>
-                  </div>
-                </div>
-                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                  <p class="text-sm leading-6 text-gray-900">Director of Product</p>
-                  <div class="mt-1 flex items-center gap-x-1.5">
-                    <div class="flex-none rounded-full bg-emerald-500/20 p-1">
-                      <div class="h-1.5 w-1.5 rounded-full bg-emerald-500"></div>
-                    </div>
-                    <p class="text-xs leading-5 text-gray-500">Online</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
       </div>
   </div>
 
+ 
 
-
-    <!-- You just need this empty div for google to be happy -->
-  <div id="map">
-  </div>
-
-  <!-- <div class="container">
-      <div id="results">
-          
-      </div>
-  </div> -->
-
+  <div id="map"></div>
   <script src="assets/script.js" type="text/javascript"></script>
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMEOHZ5tBKZPJNeiHVKtqL4ao8iQSfdZw&libraries=places&callback=searchRestaurants">
   </script>
