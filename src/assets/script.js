@@ -27,7 +27,11 @@ function searchRestaurants() {
         // Display the results
         for (var i = 0; i < 10 && i < res.length; i++) {
             var resultContainer = document.createElement('div');
-            resultContainer.classList.add('result-item', 'flex', 'justify-between', 'gap-x-6', 'py-5');
+            resultContainer.classList.add('result-item', 'clickable', 'flex', 'justify-between', 'gap-x-6', 'py-5', 'pr-10', 'cursor-pointer');
+            
+            var resultContainerId = 'clickable-' + i;
+            resultContainer.id = resultContainerId;
+            
 
             var resultRestaurantAddress = document.createElement('div');
             resultRestaurantAddress.classList.add('resultRestaurantAddress-item');
@@ -43,13 +47,16 @@ function searchRestaurants() {
             address.textContent = res[i].formatted_address;
             address.classList.add('result-item-address', 'mt-1', 'truncate', 'text-xl', 'leading-5', 'text-gray-500');
 
+            var restaurantAddressId = 'restaurant-' + i;
+            address.id = restaurantAddressId
+
             var userRaintTotal = document.createElement('li');
             userRaintTotal.textContent = ("Total reviews: " + res[i].user_ratings_total);
-            userRaintTotal.classList.add('result-item-ratings-total', 'text-xl', 'leading-6', 'text-gray-900');
+            userRaintTotal.classList.add('result-item-ratings-total', 'mt-1', 'text-xl', 'leading-5', 'text-gray-500');
 
             var rating = document.createElement('li');
             rating.textContent = ("Rating: " + res[i].rating + " out of 5");
-            rating.classList.add('result-item-rating', 'mt-1', 'text-xl', 'leading-5', 'text-gray-500');
+            rating.classList.add('result-item-rating', 'text-xl', 'leading-6', 'text-gray-900');
 
             resultRestaurantAddress.append(listElm, address)
             resultRatingRatingTotal.append(rating, userRaintTotal)
@@ -58,11 +65,27 @@ function searchRestaurants() {
             resultContainer.append(resultRestaurantAddress, resultRatingRatingTotal)
 
             resultsContainer.append(resultContainer)
+
+           
         }
 
+        for (var i = 0; i < 10; i++){
+            (function (index) {
+                var addressElement = document.getElementById('restaurant-' + i);
+                if (addressElement) {
+                    var addressText = addressElement.textContent;
+                    console.log(addressText);   
+
+                    var clickableId = document.getElementById('clickable-' + i);
+                    console.log(clickableId);
+                    clickableId.addEventListener('click', function() {
+                    window.location.href = 'https://www.google.com/maps/search/' + addressText;
+                });         
+                }
+            })(i);
+        }
     });
 }
-
 
 searchBtn.addEventListener('click', searchRestaurants);
 
