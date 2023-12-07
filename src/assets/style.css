@@ -21,7 +21,6 @@
     padding: 0px;
 }
 
-
 /* Results */
 
 #results-container {
@@ -44,3 +43,7 @@
     100% {
       background-position: 0% 50%;
     }}
+
+.result-item {
+    flex-wrap: wrap;
+}

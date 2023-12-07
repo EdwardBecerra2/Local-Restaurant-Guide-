@@ -2,12 +2,35 @@ var searchInput = document.querySelector('#search');
 var searchBtn = document.querySelector('.search-btn');
 var resultsContainer = document.querySelector('#results');
 var map;
+var userLocation = {lat:0,lng:0};  // makes into an object allows props to be set
+
+const x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    userLocation.lat = position.coords.latitude.toFixed(3)
+    userLocation.lng = position.coords.longitude.toFixed(3)
+    console.log(userLocation);
+    
+}
+getLocation();
+// showPosition();
+
 
 function searchRestaurants() {
+    if (searchInput.value == "") return; //stops execution of function if blank
     var searchQuery = searchInput.value;
-    var pyrmont = { lat: -33.866, lng: 151.196 };
+
+
     map = new google.maps.Map(document.getElementById("map"), {
-        center: pyrmont,
+        center: userLocation,
         zoom: 17,
         mapId: "8d193001f940fde3",
     });
@@ -28,10 +51,9 @@ function searchRestaurants() {
         for (var i = 0; i < 10 && i < res.length; i++) {
             var resultContainer = document.createElement('div');
             resultContainer.classList.add('result-item', 'clickable', 'flex', 'justify-between', 'gap-x-6', 'py-5', 'pr-10', 'cursor-pointer');
-            
+
             var resultContainerId = 'clickable-' + i;
             resultContainer.id = resultContainerId;
-            
 
             var resultRestaurantAddress = document.createElement('div');
             resultRestaurantAddress.classList.add('resultRestaurantAddress-item');
@@ -45,7 +67,7 @@ function searchRestaurants() {
 
             var address = document.createElement('li');
             address.textContent = res[i].formatted_address;
-            address.classList.add('result-item-address', 'mt-1', 'truncate', 'text-xl', 'leading-5', 'text-gray-500');
+            address.classList.add('result-item-address', 'mt-1', 'text-xl', 'leading-5', 'text-gray-500');
 
             var restaurantAddressId = 'restaurant-' + i;
             address.id = restaurantAddressId
@@ -66,21 +88,21 @@ function searchRestaurants() {
 
             resultsContainer.append(resultContainer)
 
-           
+
         }
 
-        for (var i = 0; i < 10; i++){
+        for (var i = 0; i < 10; i++) {
             (function (index) {
                 var addressElement = document.getElementById('restaurant-' + i);
                 if (addressElement) {
                     var addressText = addressElement.textContent;
-                    console.log(addressText);   
+                    console.log(addressText);
 
                     var clickableId = document.getElementById('clickable-' + i);
                     console.log(clickableId);
-                    clickableId.addEventListener('click', function() {
-                    window.location.href = 'https://www.google.com/maps/search/' + addressText;
-                });         
+                    clickableId.addEventListener('click', function () {
+                        window.location.href = 'https://www.google.com/maps/search/' + addressText;
+                    });
                 }
             })(i);
         }
