@@ -2,7 +2,7 @@ var searchInput = document.querySelector('#search');
 var searchBtn = document.querySelector('.search-btn');
 var resultsContainer = document.querySelector('#results');
 var map;
-var userLocation = {lat:0,lng:0};  // makes into an object allows props to be set
+var userLocation = { lat: 0, lng: 0 };  // makes into an object allows props lat & lng to be set
 
 const x = document.getElementById("demo");
 
@@ -18,16 +18,14 @@ function showPosition(position) {
     userLocation.lat = position.coords.latitude.toFixed(3)
     userLocation.lng = position.coords.longitude.toFixed(3)
     console.log(userLocation);
-    
+
 }
 getLocation();
 // showPosition();
 
-
 function searchRestaurants() {
     if (searchInput.value == "") return; //stops execution of function if blank
     var searchQuery = searchInput.value;
-
 
     map = new google.maps.Map(document.getElementById("map"), {
         center: userLocation,
@@ -46,7 +44,8 @@ function searchRestaurants() {
     service.textSearch(request, function (res) {
         console.log("Google maps response:");
         console.log(res);
-
+        document.querySelector("#results").innerHTML = '' //clears old results
+        
         // Display the results
         for (var i = 0; i < 10 && i < res.length; i++) {
             var resultContainer = document.createElement('div');
