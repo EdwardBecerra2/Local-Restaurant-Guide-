@@ -34,10 +34,10 @@ function searchRestaurants() {
             
 
             var resultRestaurantAddress = document.createElement('div');
-            resultRestaurantAddress.classList.add('resultRestaurantAddress-item');
+            resultRestaurantAddress.classList.add('resultRestaurantAddress-item', 'max-w-xl');
 
             var resultRatingRatingTotal = document.createElement('div');
-            resultRatingRatingTotal.classList.add('resultRatingRatingTotal-item');
+            resultRatingRatingTotal.classList.add('resultRatingRatingTotal-item', 'min-w-170');
 
             var listElm = document.createElement('li');
             listElm.classList.add('result-item-restaurant-name', 'text-2xl' ,'font-semibold' ,'leading-6' ,'text-gray-900');
@@ -45,7 +45,7 @@ function searchRestaurants() {
 
             var address = document.createElement('li');
             address.textContent = res[i].formatted_address;
-            address.classList.add('result-item-address', 'mt-1', 'truncate', 'text-xl', 'leading-5', 'text-gray-500');
+            address.classList.add('result-item-address', 'mt-1', 'text-xl', 'leading-5', 'text-gray-500');
 
             var restaurantAddressId = 'restaurant-' + i;
             address.id = restaurantAddressId
@@ -79,7 +79,10 @@ function searchRestaurants() {
                     var clickableId = document.getElementById('clickable-' + i);
                     console.log(clickableId);
                     clickableId.addEventListener('click', function() {
-                    window.location.href = 'https://www.google.com/maps/search/' + addressText;
+                    var link = document.createElement('a');
+                    link.href = 'https://www.google.com/maps/search/' + addressText;
+                    link.target = '_blank';
+                    link.click();
                 });         
                 }
             })(i);
