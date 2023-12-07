@@ -59,10 +59,10 @@ function searchRestaurants() {
             resultContainer.id = resultContainerId;
 
             var resultRestaurantAddress = document.createElement('div');
-            resultRestaurantAddress.classList.add('resultRestaurantAddress-item');
+            resultRestaurantAddress.classList.add('resultRestaurantAddress-item', 'max-w-xl');
 
             var resultRatingRatingTotal = document.createElement('div');
-            resultRatingRatingTotal.classList.add('resultRatingRatingTotal-item');
+            resultRatingRatingTotal.classList.add('resultRatingRatingTotal-item', 'min-w-170');
 
             var listElm = document.createElement('li');
             listElm.classList.add('result-item-restaurant-name', 'text-2xl', 'font-semibold', 'leading-6', 'text-gray-900');
@@ -103,9 +103,14 @@ function searchRestaurants() {
 
                     var clickableId = document.getElementById('clickable-' + i);
                     console.log(clickableId);
-                    clickableId.addEventListener('click', function () {
-                        window.location.href = 'https://www.google.com/maps/search/' + addressText;
-                    });
+
+                    clickableId.addEventListener('click', function() {
+                    var link = document.createElement('a');
+                    link.href = 'https://www.google.com/maps/search/' + addressText;
+                    link.target = '_blank';
+                    link.click();
+                });         
+
                 }
             })(i);
         }

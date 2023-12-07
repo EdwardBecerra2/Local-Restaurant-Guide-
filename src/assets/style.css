@@ -44,6 +44,15 @@
       background-position: 0% 50%;
     }}
 
-.result-item {
-    flex-wrap: wrap;
+
+@media (max-width: 1400px){
+    .result-item {
+        flex-direction: column;
+    }
+
+    .resultRatingRatingTotal-item {
+        padding-top: 5px;
+    }
 }
+
+
