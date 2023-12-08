@@ -44,35 +44,16 @@
             </div>
             <div id="weather-container" class="rounded-3xl">
                 <div>Weather</div>
-                <div class="container-fluid">
-                    <!-- search form -->
-                    <form id="search-form">
-                        <!-- search input label -->
-                        <label for="search-input" class="search-label m-0 text-dark">Search for a City:</label>
-                        <!-- search label input and button-->
-                        <input type="text" id="search-input" name="search-input" class="search-input rounded">
-                        <button type="submit" class="btn bg-primary rounded search-button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </form>
-                </div>
-                <div id="search-history-container" class="row m-0 search-history-container"></div>
-                <!-- current weather conditions -->
-                <div id="current-weather-container" class="row d-block">
-                    <!-- current weather title -->
-                    <div class="current-title-container">
-                        <h2 id="current-title" class="current-title d-inline"></h2>
-                        <img id="current-weather-icon" class="d-inline" src="" alt="">
+                <div id="container">
+                    <div id="historycity">
+                       
                     </div>
-                    <!-- current weather temperature -->
-                    <p class="current-temperature" id="current-temperature"></p>
-                    <!-- current weather humidity -->
-                    <p class="current-humidity" id="current-humidity"></p>
-                    <!-- current weather wind speed -->
-                    <p class="current-wind-speed" id="current-wind-speed"></p>
-                    <!-- current weather uv index -->
-                    <p class="current-uv-index" id="current-uv-index"></p>
-                    <p class="current-number rounded" id="current-number"></p>
+                    <div id="currentcity">
+                        
+                    </div>
+                    <div id="future5day">
+                      
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,7 +64,7 @@
             <div id="results" class="divide-y divide-grey-2000 p-5 m-0.5">
 
             </div>
-
+        </div>
 
             <div id="map"></div>
 
