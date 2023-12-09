@@ -12,7 +12,8 @@
 /* weather container */
 
 #weather-container {
-    height: 90vh;
+    min-height: 90vh;
+    height: fit-content;
     background: linear-gradient(180deg, #87CEFA, #B0C4DE,  white);
     background-size: 120% 240%;
     animation: gradient-animation 18s ease infinite;
