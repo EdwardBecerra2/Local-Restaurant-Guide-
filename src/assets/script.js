@@ -160,20 +160,20 @@ function displayCurrentWeather(weatherData) {
     var humidity = (weatherData.main.humidity);
     var currentDate = new Date();
     var windSpeed = (weatherData.wind.speed);
-    var formattedDate = currentDate.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+    var formattedDate = currentDate.toLocaleDateString("en-US", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
 
-    currentCityDiv.innerHTML = `<p style="font-size: 30px">Current Weather in ${weatherData.name}</p>
-                                <p style="font-size: 24px">Date: ${formattedDate}</p>
-                                <p style="font-size: 20px">Temperature: ${temperatureFahrenheit} &#8457;</p>
-                                <p style="font-size: 20px">Weather: ${weatherData.weather[0].description}</p>
-                                <p style="font-size: 20px">Humidity: ${humidity}</p>
-                                <p style="font-size: 20px">Wind Speed: ${windSpeed}</p>`;
+    currentCityDiv.innerHTML = `<div class="weather" style="font-size: 36px; padding: 10px; font-weight: bolder;">Current Weather in ${weatherData.name}</div>
+                                <div class="weather" style="font-size: 30px; padding: 5px;">Date: ${formattedDate}</div>
+                                <div class="weather" style="font-size: 24px">Temperature: ${temperatureFahrenheit} &#8457;</div>
+                                <div class="weather" style="font-size: 24px">Weather: ${weatherData.weather[0].description}</div>
+                                <div class="weather" style="font-size: 24px">Humidity: ${humidity}</div>
+                                <div class="weather" style="font-size: 24px">Wind Speed: ${windSpeed}</div>`;
 }
 
 function display5DayForecast(forecastData) {
     var future5DayDiv = document.getElementById("future5day");
-    future5DayDiv.innerHTML = '<p style="font-size: 30px">3-Day Forecast</p>';
-    for (var i = 0; i < forecastData.list.length; i += 15) {
+    future5DayDiv.innerHTML = '<div class="weather" style="font-size: 36px; padding: 10px; font-weight: bolder;">3-Day Forecast</div>';
+    for (var i = 8; i < (forecastData.list.length - 8) ; i += 8) {
         console.log(forecastData.list.length);
         var date = new Date(forecastData.list[i].dt * 1000);
         var formattedDate = date.toLocaleDateString("en-US", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
@@ -183,11 +183,11 @@ function display5DayForecast(forecastData) {
         var windSpeed = (forecastData.list[i].wind.speed);
         
         var forecastItem = document.createElement("div");
-        forecastItem.innerHTML = `<p style="font-size: 24px">Date: ${formattedDate}</p>
-                                    <p style="font-size: 20px">Temperature: ${temperatureFahrenheit} &#8457;</p>
-                                    <p style="font-size: 20px">Weather: ${forecastData.list[i].weather[0].description}</p>
-                                    <p style="font-size: 20px">Humidity: ${humidity}</p>
-                                    <p style="font-size: 20px">Wind Speed: ${windSpeed}</p>`;
+        forecastItem.innerHTML = `<div class="weather" style="font-size: 30px; padding: 5px;">Date: ${formattedDate}</div>
+                                    <div class="weather" style="font-size: 24px">Temperature: ${temperatureFahrenheit} &#8457;</div>
+                                    <div class="weather" style="font-size: 24px">Weather: ${forecastData.list[i].weather[0].description}</div>
+                                    <div class="weather" style="font-size: 24px">Humidity: ${humidity}</div>
+                                    <div class="weather" style="font-size: 24px">Wind Speed: ${windSpeed}</div>`;
         future5DayDiv.appendChild(forecastItem);
         
     }

@@ -21,6 +21,11 @@
     padding: 10px;
 }
 
+.weather {
+    text-align: center;
+}
+
+
 /* Results */
 
 #results-container {
@@ -45,9 +50,16 @@
     }}
 
 
-@media (max-width: 1400px){
+
+
+@media (max-width: 1436px){
+    #search-container {
+        min-width: 365px;
+    }
+
     .result-item {
         flex-direction: column;
+        min-width: 400px;
     }
 
     .resultRatingRatingTotal-item {
