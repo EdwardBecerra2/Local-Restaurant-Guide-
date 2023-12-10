@@ -16,6 +16,7 @@ N/A
 ## Support
 Please reach out to us with any questions -
 matt@mmcprintpackaging.com
+Edwardbecerra1207@gmail.com
 
 
 ## Contributing
@@ -29,3 +30,9 @@ N/A
 
 ## Project status
 Ongoing and will be updated with new/relavent info as needed.
+
+## Screenshot 
+![Alt Text](<Images/Screenshot 2023-12-10 at 12.08.34 PM.png>)
+
+## Deployed Application 
+https://edwardbecerra2.github.io/Local-Restaurant-Guide-/
