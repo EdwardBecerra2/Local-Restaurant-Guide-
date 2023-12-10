@@ -11,13 +11,13 @@ Icons for weather conditions are included for current and future dates.
 N/A
 
 ## Usage
-N/A
+Note the formatting and layout will adjust automatically for small or large screensizes.  
 
 ## Support
 Please reach out to us with any questions -
 matt@mmcprintpackaging.com
 Edwardbecerra1207@gmail.com
-
+wilsoncheng0324@gmail.com
 
 ## Contributing
 Open to suggestions.
