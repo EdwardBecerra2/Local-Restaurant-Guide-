@@ -85,12 +85,9 @@ function searchRestaurants() {
             resultRestaurantAddress.append(listElm, address)
             resultRatingRatingTotal.append(rating, userRaintTotal)
 
-
             resultContainer.append(resultRestaurantAddress, resultRatingRatingTotal)
 
             resultsContainer.append(resultContainer)
-
-
         }
 
         for (var i = 0; i < 10; i++) {
@@ -121,15 +118,12 @@ function searchRestaurants() {
 var searchButton = document.getElementById("search-btn");
 var clearHistoryButton = document.getElementById("clear-history-btn");
 
-
 searchBtn.addEventListener("click", function () {
     handleSearch();
-    
 });
 
 function handleSearch() {
     fetchWeatherData();
-    
 }
 
 function fetchWeatherData() {
@@ -154,7 +148,6 @@ function fetchWeatherData() {
 
 function displayCurrentWeather(weatherData) {
     var currentCityDiv = document.getElementById("currentcity");
-
     var temperatureCelsius = (weatherData.main.temp - 273.15).toFixed(2);
     var temperatureFahrenheit = ((temperatureCelsius * 9/5) + 32).toFixed(0);
     var humidity = (weatherData.main.humidity);
@@ -162,6 +155,7 @@ function displayCurrentWeather(weatherData) {
     var windSpeed = (weatherData.wind.speed);
     var formattedDate = currentDate.toLocaleDateString("en-US", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
 
+    //output & styling for current weather
     currentCityDiv.innerHTML = `<div class="weather" style="font-size: 36px; padding: 10px; font-weight: bolder;">Current Weather in ${weatherData.name}</div>
                                 <div class="weather" style="font-size: 30px; padding: 5px;">Date: ${formattedDate}</div>
                                 <div class="weather" style="font-size: 24px">Temperature: ${temperatureFahrenheit} &#8457;</div>
@@ -173,7 +167,7 @@ function displayCurrentWeather(weatherData) {
 function display5DayForecast(forecastData) {
     var future5DayDiv = document.getElementById("future5day");
     future5DayDiv.innerHTML = '<div class="weather" style="font-size: 36px; padding: 10px; font-weight: bolder;">3-Day Forecast</div>';
-    for (var i = 8; i < (forecastData.list.length - 8) ; i += 8) {
+    for (var i = 8; i < (forecastData.list.length - 8) ; i += 8) {  // loops through 3 days of data
         console.log(forecastData.list.length);
         var date = new Date(forecastData.list[i].dt * 1000);
         var formattedDate = date.toLocaleDateString("en-US", { weekday: "short", year: "numeric", month: "short", day: "numeric" });
@@ -181,8 +175,9 @@ function display5DayForecast(forecastData) {
         var temperatureCelsius = (forecastData.list[i].main.temp - 273.15).toFixed(2);
         var temperatureFahrenheit = ((temperatureCelsius * 9/5) + 32).toFixed(0);
         var windSpeed = (forecastData.list[i].wind.speed);
-        
         var forecastItem = document.createElement("div");
+
+        //output & styling for forecast
         forecastItem.innerHTML = `<div class="weather" style="font-size: 30px; padding: 5px;">Date: ${formattedDate}</div>
                                     <div class="weather" style="font-size: 24px">Temperature: ${temperatureFahrenheit} &#8457;</div>
                                     <div class="weather" style="font-size: 24px">Weather: ${forecastData.list[i].weather[0].description}</div>
@@ -194,5 +189,3 @@ function display5DayForecast(forecastData) {
 };
 
 searchBtn.addEventListener('click', searchRestaurants);
-
-
