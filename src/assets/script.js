@@ -31,7 +31,7 @@ function searchRestaurants() {
     var searchQuery = searchInput.value;
 
     map = new google.maps.Map(document.getElementById("map"), {
-        center: userLocation,
+        center: userLocation,  // identifies user's location
         zoom: 17,
         mapId: "8d193001f940fde3",
     });
@@ -90,7 +90,7 @@ function searchRestaurants() {
             resultsContainer.append(resultContainer)
         }
 
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) { // links restaurant list to google maps
             (function (index) {
                 var addressElement = document.getElementById('restaurant-' + i);
                 if (addressElement) {
@@ -106,15 +106,13 @@ function searchRestaurants() {
                     link.target = '_blank';
                     link.click();
                 });         
-
                 }
             })(i);
         }
     });
 }
 
-// weather
-
+// weather search
 var searchButton = document.getElementById("search-btn");
 var clearHistoryButton = document.getElementById("clear-history-btn");
 
@@ -127,7 +125,6 @@ function handleSearch() {
 }
 
 function fetchWeatherData() {
-       
     console.log(userLocation);              
                 fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.lat}&lon=${userLocation.lng}&appid=dfb1bbc6193c13c32f550c45f737430e`)
                     .then(function (response) {
@@ -157,8 +154,8 @@ function displayCurrentWeather(weatherData) {
 
     //output & styling for current weather
     currentCityDiv.innerHTML = `<div class="weather" style="font-size: 36px; padding: 10px; font-weight: bolder;">Current Weather in ${weatherData.name}</div>
-                                <div class="weather" style="font-size: 30px; padding: 5px;">Date: ${formattedDate}</div>
-                                <div class="weather" style="font-size: 24px">Temperature: ${temperatureFahrenheit} &#8457;</div>
+                                <div class="weather" style="font-size: 30px; padding: 5px;">${formattedDate}</div>
+                                <div class="weather" style="font-size: 24px">Temp: ${temperatureFahrenheit} &#8457;</div>
                                 <div class="weather" style="font-size: 24px">Weather: ${weatherData.weather[0].description}</div>
                                 <div class="weather" style="font-size: 24px">Humidity: ${humidity}</div>
                                 <div class="weather" style="font-size: 24px">Wind Speed: ${windSpeed}</div>`;
@@ -178,8 +175,8 @@ function display5DayForecast(forecastData) {
         var forecastItem = document.createElement("div");
 
         //output & styling for forecast
-        forecastItem.innerHTML = `<div class="weather" style="font-size: 30px; padding: 5px;">Date: ${formattedDate}</div>
-                                    <div class="weather" style="font-size: 24px">Temperature: ${temperatureFahrenheit} &#8457;</div>
+        forecastItem.innerHTML = `<div class="weather" style="font-size: 30px; padding: 5px;">${formattedDate}</div>
+                                    <div class="weather" style="font-size: 24px">Temp: ${temperatureFahrenheit} &#8457;</div>
                                     <div class="weather" style="font-size: 24px">Weather: ${forecastData.list[i].weather[0].description}</div>
                                     <div class="weather" style="font-size: 24px">Humidity: ${humidity}</div>
                                     <div class="weather" style="font-size: 24px">Wind Speed: ${windSpeed}</div>`;
