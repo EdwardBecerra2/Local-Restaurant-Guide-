@@ -64,4 +64,8 @@
     }
 }
 
-
+@media screen and (max-width:640px) { /* creates xtra small media query */
+    .xs-flex-col {
+        flex-direction: column;
+    }
+}

@@ -5,7 +5,7 @@ Guide to find highly rated restaurants around the user's neighborhood with curre
 Searching for a type of food or dining city will present 10 restaurants in the users neighborhood along with current & future weather conditions to plan for a nice night to dine out.  Clicking on the selected restaurant will present the user with a Google map of the restaurant location.
 
 ## Visuals
-Icons for weather conditions are included for current and future dates.
+Icons for weather conditions are included for current and future dates. 
 
 ## Installation
 N/A
